@@ -1,0 +1,114 @@
+\documentclass[11pt,twoside]{book}
+
+\usepackage{graphicx}
+\usepackage[activeacute,spanish]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{styles/fancyhdr}
+\usepackage{styles/urjc}
+\usepackage{url}
+\usepackage[nottoc,notlof,notlot]{tocbibind}
+\usepackage{palatino}
+\usepackage[Lenny]{fncychap}
+\usepackage[font=small,format=plain,labelfont=bf,up,textfont=it,up]{caption}
+\usepackage{watermark}
+\usepackage{ncccropmark}
+\usepackage[twoside,bindingoffset=1cm,papersize={170mm,240mm},total={135mm, 220mm},includefoot,includehead]{geometry}
+
+\newcommand{\clearemptydoublepage}{\newpage{\pagestyle{empty}%
+\cleardoublepage}}
+
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+
+%------------------------------
+% My own packages
+%------------------------------------------
+
+\usepackage{styles/cropmark}
+%%% helvetica
+\usepackage{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage{hyperref}
+\hypersetup{
+    pdfborder={0 0 0},
+    colorlinks=false,
+    linkcolor=blue,   % color of internal links
+    citecolor=blue,   % color of links to bibliography
+    urlcolor=blue,    % color of external links
+    pagebackref=true,
+    implicit=false,
+    bookmarks=true,
+    bookmarksopen=true,
+    pdfdisplaydoctitle=true
+}
+
+%------------------------------------------
+\begin{document}
+
+    \title{Título de Tesis}
+    \author{Autor}
+    \tutor{Director 1}{Director 2}
+    \grado{Programa Doctorado}
+
+    \beforepreface
+
+    \prefacesection{Agradecimientos}
+    \input{agradecimientos}
+
+    \prefacesection{Resumen}
+    \input{resumen}
+
+    \prefacesection{Abstract}
+    \input{abstract}
+
+    \cleardoublepage
+    \afterpreface
+
+    \pagestyle{fancyplain}
+    \renewcommand{\chaptermark}[1] %
+    {\markboth{#1}{\thechapter\ #1}}
+    \renewcommand{\sectionmark}[1]%
+    {\markright{\thesection\ #1}}
+    \lhead[\fancyplain{}{\bfseries\thepage}]
+    {\fancyplain{}{\bfseries\rightmark}}
+    \rhead[\fancyplain{}{\bfseries\leftmark}] {\fancyplain{}{\bfseries\thepage}}
+    \cfoot{}
+
+    %------------------------------
+    % Introduction
+    %------------------------------------------
+    \input{introduction}
+    \clearemptydoublepage
+    %------------------------------------------
+
+    %------------------------------
+    % Body
+    %------------------------------------------
+    \input{chap1}
+    % other chapters
+    \clearemptydoublepage
+    %------------------------------------------
+
+    %------------------------------
+    % Conclusions
+    %------------------------------------------
+    \input{generalConclusion}
+    \clearemptydoublepage
+    %------------------------------------------
+
+    %------------------------------
+    % References
+    %------------------------------------------
+    \bibliographystyle{ieeetr}
+    \bibliography{references}
+    %------------------------------------------
+
+    %------------------------------
+    % Appendices
+    %------------------------------------------
+    \appendix
+    \input{appendix1}
+    %------------------------------------------
+
+\end{document}
